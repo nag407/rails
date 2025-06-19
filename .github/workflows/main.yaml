@@ -28,15 +28,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: 'Bundler Audit'
         uses: andrewmcodes/bundler-audit-action@main
-      
-       # - uses: actions/checkout@v2
-       # - run: docker run --rm -v $(pwd):/src -w /src hysnsec/bundle-audit check --format json --output bundle-audit-output.json
-
-       # - uses: actions/upload-artifact@v4
-       #   with:
-       #     name: bundler
-       #     path: bundle-audit-output.json
-       #   if: always()
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        with:
+            name: bundler
+            path: bundle-audit-output.json
+         
     
   integration:
     runs-on: ubuntu-22.04
